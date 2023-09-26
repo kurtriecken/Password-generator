@@ -10,5 +10,9 @@ function writePassword() {
 
 }
 
+function generatePassword() {
+  return "Hello from inside JS";
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
