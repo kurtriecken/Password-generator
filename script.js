@@ -38,7 +38,9 @@ function generatePassword(array) {
     finalPassword = finalPassword.concat(numbers);
   }
 
-  let returnString = finalPassword.toString();
+// generate a valid password; use Math.random and Arrays.prototype.includes() to validate
+  
+  let returnString = finalPassword.join('');
   return returnString;
 }
 
