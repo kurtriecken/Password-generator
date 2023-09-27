@@ -1,6 +1,8 @@
 // Global variables
 const lettersUpper = ["A", "B", "C"];
 const lettersLower = ["a", "b", "c"];
+const specialChars = ["!", ",", "&"];
+const numbers = ["1", "2", "3"];
 let passwordLen = 0;
 
 // Assignment Code
@@ -29,18 +31,22 @@ function generatePassword(array) {
   if (confirm(`Use lower case letter?`)) {
     finalPassword = finalPassword.concat(lettersLower);
   }
-  console.log(`First element in password array is:`);
-  console.log(finalPassword[0]);
-  returnString = `Your password is ${finalPassword[0]}`;
+  if (confirm(`Use special characters?`)) {
+    finalPassword = finalPassword.concat(specialChars);
+  }
+  if (confirm(`Use numbers?`)) {
+    finalPassword = finalPassword.concat(numbers);
+  }
+
+  let returnString = finalPassword.toString();
   return returnString;
 }
 
 function validInput() {
 //get input
 passwordLen = prompt("Please provide a number between 8 and 128");
-console.log(`input is ${passwordLen}`);
 
-//if valid, great, return true
+//validate input as number between 8 and 128
 if (isNaN(passwordLen)) {
   alert("Input is not a number; please provide a valid number!");
   return false;
@@ -49,6 +55,7 @@ else if (passwordLen < 8 || passwordLen > 128) {
   alert("Number must be between 8 and 128, please.");
   return false;
 }
+//if valid, great, return true
 else {
   alert("Thank you!");
   return true;
