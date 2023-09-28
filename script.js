@@ -24,24 +24,28 @@ function generatePassword(array) {
     flag = validInput();
   }
  
-  let finalPassword = ["d"];
+  let possibleChars = [];
   if (confirm(`Use upper case letter?`)) {
-    finalPassword = finalPassword.concat(lettersUpper);
+    possibleChars = possibleChars.concat(lettersUpper);
   }
   if (confirm(`Use lower case letter?`)) {
-    finalPassword = finalPassword.concat(lettersLower);
+    possibleChars = possibleChars.concat(lettersLower);
   }
   if (confirm(`Use special characters?`)) {
-    finalPassword = finalPassword.concat(specialChars);
+    possibleChars = possibleChars.concat(specialChars);
   }
   if (confirm(`Use numbers?`)) {
-    finalPassword = finalPassword.concat(numbers);
+    possibleChars = possibleChars.concat(numbers);
   }
 
 // generate a valid password; use Math.random and Arrays.prototype.includes() to validate
-  
-  let returnString = finalPassword.join('');
-  return returnString;
+let yourPassword = [];
+for (let i = 0; i < passwordLen; i++) {
+  yourPassword = yourPassword.concat(possibleChars[Math.floor(Math.random()*possibleChars.length)]);  
+}
+console.log(yourPassword);
+console.log(yourPassword.join(""));
+  return yourPassword.join("");
 }
 
 function validInput() {
