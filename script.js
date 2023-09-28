@@ -35,7 +35,6 @@ function writePassword() {
 
 function generatePassword() {
   while (!validateInput()) {
-    flag = validateInput();
   }
   getPossibleChars();
 
