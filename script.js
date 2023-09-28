@@ -6,6 +6,7 @@ const lettersLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
 const specialChars = ["!", "@", "#", "$", "^", "&", "*", "(", ")"];
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 let passwordLen = 0;
+let possibleChars = [];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -26,7 +27,23 @@ function generatePassword(array) {
     flag = validInput();
   }
  
-  let possibleChars = [];
+  // EXTRACT this out to its own function
+  // REPEAT if no options chosen
+  possibleChars = [];
+  getPossibleChars();
+
+
+// generate a valid password; use Math.random and Arrays.prototype.includes() to validate
+let yourPassword = [];
+for (let i = 0; i < passwordLen; i++) {
+  yourPassword = yourPassword.concat(possibleChars[Math.floor(Math.random()*possibleChars.length)]);  
+}
+console.log(yourPassword);
+console.log(yourPassword.join(""));
+  return yourPassword.join("");
+}
+
+function getPossibleChars() {
   if (confirm(`Use upper case letter?`)) {
     possibleChars = possibleChars.concat(lettersUpper);
   }
@@ -39,15 +56,11 @@ function generatePassword(array) {
   if (confirm(`Use numbers?`)) {
     possibleChars = possibleChars.concat(numbers);
   }
-
-// generate a valid password; use Math.random and Arrays.prototype.includes() to validate
-let yourPassword = [];
-for (let i = 0; i < passwordLen; i++) {
-  yourPassword = yourPassword.concat(possibleChars[Math.floor(Math.random()*possibleChars.length)]);  
-}
-console.log(yourPassword);
-console.log(yourPassword.join(""));
-  return yourPassword.join("");
+  while (possibleChars.length == 0) {
+    alert("You must select at least one type!");
+    getPossibleChars();
+  }
+  return;
 }
 
 function validInput() {
@@ -73,3 +86,8 @@ return false;
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+
+
+
