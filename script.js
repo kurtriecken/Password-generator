@@ -1,8 +1,10 @@
 // Global variables
-const lettersUpper = ["A", "B", "C"];
-const lettersLower = ["a", "b", "c"];
-const specialChars = ["!", ",", "&"];
-const numbers = ["1", "2", "3"];
+const lettersUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
+"Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const lettersLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+"q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const specialChars = ["!", "@", "#", "$", "^", "&", "*", "(", ")"];
+const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 let passwordLen = 0;
 
 // Assignment Code
