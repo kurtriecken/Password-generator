@@ -1,10 +1,10 @@
 /*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
 // Global variables
-const lettersUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
-  "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-const lettersLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-  "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const lettersUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
+  "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const lettersLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+  "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const specialChars = ["!", "@", "#", "$", "^", "&", "*", "(", ")"];
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 let passwordLen = 0;
@@ -19,7 +19,7 @@ var charFlags = {
 
 /*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
-// Event listener
+// Event listener for onscreen button
 var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
 
@@ -27,25 +27,23 @@ generateBtn.addEventListener("click", writePassword);
 /*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
 /*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
 // Functions
+
+// Calls the functions necessary to generate a password, then writes it to the screen
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+  document.querySelector("#password").value = password;
 }
 
+// Calls other functions, that may need to be repeated, until a valid password is generated
 function generatePassword() {
   while (!validateInput()) {
   }
   getPossibleChars();
-
-  // generate a valid password; use Math.random and Arrays.prototype.includes() to validate
   validatePassword();
-
-  // console.log(yourPassword);
-  // console.log(yourPassword.join(""));
   return yourPassword.join("");
 }
 
+// Fills the possibleChars array with potential characters, dependent on the user's choices
 function getPossibleChars() {
   // Reset possible characters and flags if page has not been refreshed
   possibleChars = [];
@@ -77,9 +75,9 @@ function getPossibleChars() {
   return;
 }
 
+// Gets and stores a valid number for the length of the password
 function validateInput() {
   passwordLen = prompt("Please provide a number between 8 and 128");
-
 
   if (isNaN(passwordLen)) {
     alert("Input is not a number; please provide a valid number!");
@@ -89,15 +87,13 @@ function validateInput() {
     alert("Number must be between 8 and 128, please.");
     return false;
   }
-
   else {
     alert("Thank you!");
     return true;
   }
-  return false;
 }
 
-// Produces a random password and validates to ensure every specified character type is included
+// Produces a random password and validates it to ensure every specified character type is included
 function validatePassword() {
   // Initialize my password and array flags
   yourPassword = [];
@@ -108,11 +104,13 @@ function validatePassword() {
     numFlag: false
   };
 
-  for (let i=0; i<passwordLen; i++) {
+  // Generate a password using array of possible values
+  for (let i = 0; i < passwordLen; i++) {
     yourPassword = yourPassword.concat(possibleChars[Math.floor(Math.random() * possibleChars.length)]);
   }
-  
-  for (let j=0; j<yourPassword.length; j++) {
+
+  // Flag which arrays are included in the generated password
+  for (let j = 0; j < yourPassword.length; j++) {
     if (lettersUpper.includes(yourPassword[j])) {
       yourFlags.upFlag = true;
     }
@@ -120,18 +118,18 @@ function validatePassword() {
       yourFlags.lowFlag = true;
     }
     else if (specialChars.includes(yourPassword[j])) {
-      yourFlags.specFlag= true;
+      yourFlags.specFlag = true;
     }
     else if (numbers.includes(yourPassword[j])) {
       yourFlags.numFlag = true;
     }
   }
 
-  // If any flags don't match, run a new password
-  if (charFlags.upFlag != yourFlags.upFlag || 
+  // If any flags don't match with what is expected, generate a new password
+  if (charFlags.upFlag != yourFlags.upFlag ||
     charFlags.lowFlag != yourFlags.lowFlag ||
     charFlags.specFlag != yourFlags.specFlag ||
     charFlags.numFlag != yourFlags.numFlag) {
-      validatePassword();
-    }
+    validatePassword();
+  }
 }

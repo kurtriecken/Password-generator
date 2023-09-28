@@ -1,9 +1,11 @@
+/* Universal selectors */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Body styling */
 html,
 body,
 .wrapper {
@@ -18,11 +20,10 @@ body {
 }
 
 .wrapper {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 30px 20px 0 20px;
 }
 
+/* Header styling */
 header {
   text-align: center;
   padding: 20px;
@@ -30,6 +31,7 @@ header {
   color: hsl(206, 17%, 28%);
 }
 
+/* UX area styling */
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
@@ -54,6 +56,7 @@ header {
   min-height: 100px;
 }
 
+/* Button styling area */
 .card-footer {
   text-align: center;
 }
@@ -104,10 +107,7 @@ button[disabled] {
   border: none;
   display: block;
   width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
+  padding: 15px 15px 85px 15px;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 10px;
@@ -118,6 +118,7 @@ button[disabled] {
   overflow: hidden;
 }
 
+/* Changes for smaller screen sizes */
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
