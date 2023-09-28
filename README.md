@@ -10,7 +10,7 @@ No installation is necessary! Follow the following links to the github repositor
 
 Github repository: https://github.com/kurtriecken/Password-generator
 
-Deployed site: 
+Deployed site: https://kurtriecken.github.io/Password-generator/
 
 ## Usage
 
