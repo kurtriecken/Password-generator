@@ -16,7 +16,7 @@ Deployed site: https://kurtriecken.github.io/Password-generator/
 
 Below is screenshot of the deployed website. 
 
-![Screenshot](./assets/Screenshot.png)
+![Screenshot](./assets/pictures/Screenshot.png)
 
 To begin, click the red button titled "Generate Password" near the bottom of your screen. Follow the prompts and answer the questions as requested by the browser. When prompted for a number of characters for your password, only valid numbers between 8 and 128 will be accepted. Any other inputs will cause an error message and re-prompt for a number.
 
